@@ -1,0 +1,78 @@
+{% load static  %}
+
+
+<!DOCTYPE html>
+<html>
+    
+<head>
+	<title>View Users</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+	<link rel = "stylesheet" type="text/css" href="{% static "css/view_task.css" %}">
+
+
+</head>
+<body>
+    <nav>
+        <div class="container h-100">
+            <div class="d-flex justify-content-center h-100">
+                
+		<ul>
+		  <li><a id="home" href="{% url "admin_dash" %}">Home</a></li>
+		  <li><p>User Manager</p></li>
+		  <li style="float:right"><a id="login" href="{% url "login" %}">Login</a></li>
+		  <li style="float:right"><a id="donate" href="{% url "user-logout" %}">Log OUT</a></li>
+	  </nav>
+    </div>
+    <div>
+	<div class="container h-100">
+		<div class="d-flex justify-content-center h-100">
+			<div class="user_card">
+				<div class="d-flex justify-content-center">
+                    <h3 id="form-title">Welcome Admin </h3>
+                </div>
+    
+                {% for usr in users %}
+                
+                <div class="d-flex justify-content-center h-100" >
+                    <div class="user_card" id="contain_task">
+                        <div class="d-flex justify-content-center">
+                                <p id="partitre">{{usr.username}}</p><br><br>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                                <p id="par">{{usr.email}}</p><br><br>
+                        </div>
+                        <div class="d-flex justify-content-center mt-3 login_container" id="task_button">
+                            <a href="{% url "update_user" usr.id %}"class="btn login_btn">UPDATE USER</a>
+                        </div>
+                        <div class="d-flex justify-content-center mt-3 login_container" id="task_button">
+                            <a href="{% url "delete_user" usr.id %}"class="btn login_btn">DELETE USER</a>
+                        </div>
+                    </div>
+                </div>
+            
+                {% endfor %}
+                <div class="d-flex justify-content-center mt-3 login_container">
+                    <a href="{% url "admin_dash" %}"class="btn login_btn">GO Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
